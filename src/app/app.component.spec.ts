@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { RouterTestingModule } from '@angular/router/testing';
+import { WeatherDetailsComponent } from './components/weather-details/weather-details.component';
+import {  HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -9,7 +12,8 @@ describe('AppComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [AppComponent],
-      imports: [RouterTestingModule],
+      imports: [WeatherDetailsComponent, HttpClientModule, BrowserModule],
+      providers: [],
     });
 
     fixture = TestBed.createComponent(AppComponent);
