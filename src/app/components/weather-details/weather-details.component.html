@@ -1,0 +1,191 @@
+<div class="container">
+  <header>
+    <div class="logo-container">
+      <div class="logo">
+        <i class="fa-solid fa-cloud-sun-rain logo-icon-color"></i>
+        <label> The Weather App </label>
+      </div>
+    </div>
+    <div class="search-container">
+      <app-country-details (selectedCity)="searchWeatherDetails($event)">
+      </app-country-details>
+    </div>
+  </header>
+  <section>
+    <div class="weather-card">
+      @if (currentWeather | async; as currentWeatherDetails) {
+      <div class="glass-css inner-pad">
+        <div>Today</div>
+        <div class="city-name">
+          {{ currentWeatherDetails.data[0].city_name }},
+          {{ currentWeatherDetails.data[0].country_code }}
+        </div>
+        <div class="inner-cards">
+          <div class="inner-card-column">
+            <div class="pad-1">
+              <span class="current-temp">
+                {{ currentWeatherDetails.data[0].temp }}&#176;c
+              </span>
+            </div>
+            <div class="font-small">
+              Feels Like: {{ currentWeatherDetails.data[0].app_temp }}&#176;
+            </div>
+
+            <div class="weather-description">
+              {{ currentWeatherDetails.data[0].weather.description }}
+            </div>
+          </div>
+          <div class="inner-card-column">
+            <div>
+              <img
+                [src]="
+                  imageUrl + currentWeatherDetails.data[0].weather.icon + '.png'
+                "
+                alt="weather Image"
+              />
+            </div>
+          </div>
+          <div class="inner-card-column font-small">
+            <div>
+              <i class="icon fa-solid fa-sun"></i>
+              <span> Sunrise: {{ currentWeatherDetails.data[0].sunrise }}</span>
+            </div>
+            <div>
+              <i class="icon fa-solid fa-moon"></i>
+              <span> Sunset: {{ currentWeatherDetails.data[0].sunset }}</span>
+            </div>
+            <div>
+              <i class="icon fa-solid fa-smog"></i>
+              <span>
+                Air Quality: {{ currentWeatherDetails.data[0].aqi }}
+              </span>
+            </div>
+          </div>
+          <div class="inner-card-column font-small">
+            <div>
+              <i class="icon fa-solid fa-u"></i>
+              <span> UV Index: {{ currentWeatherDetails.data[0].uv }} </span>
+            </div>
+            <div>
+              <i class="icon fa-solid fa-wind"></i>
+              <span>
+                Wind Speed:
+                {{ currentWeatherDetails.data[0].wind_spd }} m/s</span
+              >
+            </div>
+            <div>
+              <i class="icon fa-solid fa-snowflake"></i>
+              <span>
+                Snowfall: {{ currentWeatherDetails.data[0].snow }} mm/hr</span
+              >
+            </div>
+            <div>
+              <i class="icon fa-solid fa-cloud-showers-heavy"></i>
+              <span>
+                Precipitation:
+                {{ currentWeatherDetails.data[0].precip }} mm/hr</span
+              >
+            </div>
+            <div>
+              <i class="icon fa-solid fa-cloud"></i>
+              <span>
+                Cloud coverage:
+                {{ currentWeatherDetails.data[0].clouds }} %</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      } @if (getDailyForecast | async; as dailyForecastDetails) {
+      <div class="next-5 glass-css inner-pad forecast">
+        Forecast for next 5 days
+        <span class="align-right">
+          <i
+            [ngClass]="
+              sortValue === 'desc' ? 'fas fa-sort-up' : 'fas fa-sort-down'
+            "
+            (click)="toggleSort()"
+          ></i>
+        </span>
+      </div>
+
+      @for (forecast of dailyForecastDetails.data | dateSort:sortValue; track
+      $index) {
+      <div class="glass-css inner-pad forecast">
+        <div>{{ forecast.datetime | date : "EEEE, MMMM d, y" }}</div>
+        <div class="inner-cards">
+          <div class="inner-card-column">
+            <div class="pad-1">
+              <span class="current-temp"> {{ forecast.temp }}&#176;c </span>
+            </div>
+            <div class="weather-description">
+              {{ dailyForecastDetails.data[0].weather.description }}
+            </div>
+          </div>
+          <div class="inner-card-column">
+            <div>
+              <img
+                [src]="
+                  imageUrl + dailyForecastDetails.data[0].weather.icon + '.png'
+                "
+                alt="weather Image"
+              />
+            </div>
+          </div>
+          <div class="inner-card-column font-small">
+            <div>
+              <i class="icon fa-solid fa-sun"></i>
+              <span> Sunrise: {{ forecast.sunrise_ts }}</span>
+            </div>
+            <div>
+              <i class="icon fa-solid fa-moon"></i>
+              <span> Sunset: {{ forecast.sunset_ts }}</span>
+            </div>
+
+            <div class="font-small">
+              <i class="icon fa-solid fa-temperature-high"></i>
+              <span> Max Temp: {{ forecast.max_temp }}&#176; C </span>
+            </div>
+            <div class="font-small">
+              <i class="icon fa-solid fa-temperature-low"></i>
+              <span> Min Temp: {{ forecast.min_temp }}&#176;C</span>
+            </div>
+          </div>
+          <div class="inner-card-column font-small">
+            <div>
+              <i class="icon fa-solid fa-u"></i>
+              <span> UV Index: {{ forecast.uv }} </span>
+            </div>
+            <div>
+              <i class="icon fa-solid fa-wind"></i>
+              <span>
+                Wind Speed:
+                {{ forecast.wind_spd }} m/s</span
+              >
+            </div>
+            <div>
+              <i class="icon fa-solid fa-snowflake"></i>
+              <span> Snowfall: {{ forecast.snow }} mm/hr</span>
+            </div>
+            <div>
+              <i class="icon fa-solid fa-cloud-showers-heavy"></i>
+              <span>
+                Precipitation:
+                {{ forecast.precip }} mm/hr</span
+              >
+            </div>
+            <div>
+              <i class="icon fa-solid fa-cloud"></i>
+              <span>
+                Cloud coverage:
+                {{ forecast.clouds }} %</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      } }
+    </div>
+    <div></div>
+  </section>
+</div>

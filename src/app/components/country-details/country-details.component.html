@@ -1,0 +1,27 @@
+<div class="autocomplete" [formGroup]="autocompleteForm">
+  <div class="search-box">
+    <input
+      class="form-control"
+      id="searchStr"
+      placeholder="Type a city to search for weather"
+      formControlName="searchInput"
+      (keydown)="onKeyDown($event)"
+    />
+    <button
+      class="btn btn-outline-success"
+      type="button"
+      (click)="emitCityName()"
+    >
+      <i class="fas fa-search"></i>
+    </button>
+  </div>
+  @if (filteredCities.length > 0) {
+  <ul>
+    @for (data of filteredCities ; track data; let i = $index) {
+    <li (click)="selectCity(data)" [class.selected]="i === selectedCityIndex">
+      {{ data.localizedName }}, {{ data?.country?.localizedName }}
+    </li>
+    }
+  </ul>
+  }
+</div>

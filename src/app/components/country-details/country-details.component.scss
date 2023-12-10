@@ -1,0 +1,70 @@
+.autocomplete {
+    position: relative;
+    display: inline-block;
+  }
+  $font-stack: "Cambria", "Georgia", "Times New Roman","Roboto", sans-serif;
+ 
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    z-index: 1;
+    background-color: #fff;
+    width: 80vw;
+    font-family: $font-stack;
+  }
+  
+  li {
+    padding: 1em;
+    cursor: pointer;
+    font-size: 2vh;
+  }
+  
+  li:hover {
+    background-color: #ddd;
+  }
+
+  
+  
+  li.selected {
+    background-color: #f1f1f1; 
+  }
+
+  .search-box { 
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.search-box .form-control {
+    width: 80vw;
+    border: 0;
+    height: 3rem;
+    padding: 0 10px;
+    outline: 0;
+    border-radius:  15px 0 0 15px;
+
+
+}
+
+.search-box .btn {
+    background: #fff;
+    border: 1px solid #000;
+    height: 3rem;
+    padding: 10px;
+    margin-right: 10px;
+    border: 0;
+    cursor: pointer;
+    outline: 0;
+    border-radius: 0 15px 15px 0;
+}
+
+.search-box .btn:hover {
+    background: #7f7194;
+}
+
+
+
+  

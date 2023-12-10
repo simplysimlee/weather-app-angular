@@ -1,0 +1,127 @@
+$font-stack: "Cambria", "Georgia", "Times New Roman", "Roboto", sans-serif;
+$small-fonts: 1.7vh;
+$big-fonts: 7vh;
+$medium-fonts: 3vh;
+
+.container {
+  background: url(../../../assets/images/night-sky.avif) no-repeat center center;
+  background-size: cover;
+  object-fit: cover;
+  min-height: 100vh;
+  height: 100%;
+  font-size: $small-fonts;
+  font: $small-fonts;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: row;
+}
+
+.logo {
+  color: #f4efef;
+  font-family: $font-stack;
+  font-size: $medium-fonts;
+  padding: 1em 2em;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+
+.search-container {
+  @extend .flex-container;
+}
+
+.weather-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  padding: 1em 0;
+}
+
+.glass-css {
+  backdrop-filter: blur(6px) saturate(180%);
+  -webkit-backdrop-filter: blur(6px) saturate(180%);
+  background-color: rgba(17, 25, 40, 0.55);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  width: 60vw;
+  color: #f4efef;
+  font-family: $font-stack;
+  margin: 0.5em 0;
+}
+
+.forecast {
+  background-color: rgba(17, 25, 40, 0.75);
+}
+
+.inner-pad {
+  padding: 1em;
+}
+
+.inner-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+/* Create four equal columns */
+.inner-card-column {
+  flex: 25%;
+}
+
+/* On screens that are 1200px wide or less, go from four columns to two columns */
+@media screen and (max-width: 1200px) {
+  .inner-card-column {
+    flex: 50%;
+  }
+}
+
+/* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .row {
+    flex-direction: column;
+  }
+}
+
+.city-name {
+  font-size: $medium-fonts;
+}
+.current-temp {
+  font-size: $big-fonts;
+}
+.font-small {
+  font-size: $small-fonts;
+}
+.pad-1 {
+  padding: 1em 0;
+}
+
+.weather-description {
+  font-size: $medium-fonts;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+.next-5 {
+  font: $font-stack $small-fonts;
+}
+
+.weather-icon {
+  height: 5em;
+}
+
+.align-right {
+  float: right;
+  padding-right: 1rem;
+}
